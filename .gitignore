@@ -1,0 +1,8 @@
+.cache
+.DS_Store
+sessions
+.netrwhist
+undo
+.luarc.json
+*.log
+lazy-lock.json
