@@ -44,9 +44,9 @@ local Plugin = {
 }
 
 Plugin.config = function()
-  local telescope = require("telescope")
-  local actions = require("telescope.actions")
-  local undo = require("telescope-undo.actions")
+  local telescope = require("my.utils").load_plugin("telescope")
+  local actions = require("my.utils").load_plugin("telescope.actions")
+  local undo = require("my.utils").load_plugin("telescope-undo.actions")
   local icons = { ui = require("my.utils.icons").get("ui", true) }
 
   telescope.setup({

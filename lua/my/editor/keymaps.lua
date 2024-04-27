@@ -1,6 +1,6 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ FILE: my/editor/keymaps.lua                                              │--
+--│ MODULE: my.editor.keymaps                                                │--
 --│ DESC: Custom key binds for editor                                        │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
@@ -56,7 +56,7 @@ local editor_keymaps = {
   ["n|<Leader>q"] = map_cr("wq"):desc("Edit: Save file and quit"),
   ["n|<Leader>Q"] = map_cr("q!"):desc("Edit: Force quit"),
   -- ["n|<Leader>ts"] = map_cr("setlocal spell! spelllang=en_us"):desc("Edit: Toggle spell check"),
-  ["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]]):desc("Edit: Complete path of current file"),
+  ["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h")<CR>]]):desc("Edit: Complete path of current file"),
   --------------------------------- Windows ------------------------------------
   ["n|<C-h>"] = map_cmd("<C-w>h"):desc("Windows: Focus left"),
   ["n|<C-l>"] = map_cmd("<C-w>l"):desc("Windows: Focus right"),

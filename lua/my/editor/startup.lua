@@ -1,7 +1,7 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ FILE: my/editor/misc.lua                                                 │--
---│ DESC: initial setup for editor                                             │--
+--│ MODULE: my.editor.startup                                                │--
+--│ DESC: Initial setup for editor                                           │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
 local Startup = {}
@@ -9,11 +9,11 @@ local system =  require("my.utils.system")
 
 local function create_cache_dir()
   local data_dir = {
-    system.cache_dir .. "backup",
-    system.cache_dir .. "session",
-    system.cache_dir .. "swap",
-    system.cache_dir .. "tags",
-    system.cache_dir .. "undo",
+    system.cache_dir / "backup",
+    system.cache_dir / "session",
+    system.cache_dir / "swap",
+    system.cache_dir / "tags",
+    system.cache_dir / "undo",
   }
   -- Only check whether cache_dir exists, this would be enough.
   if vim.fn.isdirectory(system.cache_dir) == 0 then
@@ -69,12 +69,12 @@ You're recommended to install PowerShell for better experience.]],
 
     local basecmd = "-NoLogo -MTA -ExecutionPolicy RemoteSigned"
     local ctrlcmd = "-Command [console]::InputEncoding = [console]::OutputEncoding = [System.Text.Encoding]::UTF8"
-    vim.api.nvim_set_option_value("shell", vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell", {})
-    vim.api.nvim_set_option_value("shellcmdflag", string.format("%s %s;", basecmd, ctrlcmd), {})
-    vim.api.nvim_set_option_value("shellredir", "-RedirectStandardOutput %s -NoNewWindow -Wait", {})
-    vim.api.nvim_set_option_value("shellpipe", "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode", {})
-    vim.api.nvim_set_option_value("shellquote", nil, {})
-    vim.api.nvim_set_option_value("shellxquote", nil, {})
+    vim.opt.shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell"
+    vim.opt.shellcmdflag = string.format("%s %s;", basecmd, ctrlcmd)
+    vim.opt.shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait"
+    vim.opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+    vim.opt.shellquote = nil
+    vim.opt.shellxquote = nil
   end
 end
 

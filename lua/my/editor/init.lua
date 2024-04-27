@@ -1,7 +1,7 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ FILE: my/editor/init.lua                                                      │--
---│ DESC: Init file for editor
+--│ MODULE: my.editor                                                        │--
+--│ DESC: Init file for editor                                               │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
 local editor_startup = require("my.editor.startup")

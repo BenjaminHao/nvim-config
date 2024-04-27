@@ -1,6 +1,6 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ FILE: my/editor/options.lua                                              │--
+--│ MODULE: my.editor.options                                                │--
 --│ DESC: basic options for Neovim                                           │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
@@ -15,15 +15,14 @@ local global_options = {
   updatetime = 200,                      -- Faster completion (4000ms default)
   swapfile = false,                      -- Creates a swapfile
   undofile = true,                       -- Enable persistent undo
-  undodir = system.cache_dir .. "undo/", -- Set undo dictionary
+  undodir = system.cache_dir / "undo",   -- Set undo dictionary
   writebackup = false,                   -- If a file is being edited by another program, it is not allowed to be edited
   mouse = "a",                           -- Allow the mouse to be used in neovim
   mousescroll = "ver:2,hor:4",           -- Change the speed of the scroll wheel
   jumpoptions = "stack",                 -- Make Ctrl-o consistent
 
   -- APPEARANCE
-  guifont =
-    "JetBrainsMono Nerd Font:h16",       -- Font for GUI NVIM
+  guifont = "MapleMono Nerd Font:h16",   -- Font for GUI NVIM
   number = true,                         -- Set numbered lines
   relativenumber = true,                 -- Set relative numbered lines
   numberwidth = 2,                       -- Set number column width to 2 (default 4)
