@@ -1,6 +1,6 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ FILE: plugins/nvim-treesitter.lua                                        │--
+--│ MODULE: my.plugins.editor.nvim-treesitter                                │--
 --│ DESC: Syntax highlighting plugin (a C complier is required)              │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
@@ -19,7 +19,6 @@ return {
   config = function()
     local treesitter = require("nvim-treesitter.configs")
     local treesj = require("treesj")
-    local map = require("core.utils").set_vim_keymap
 
     --------------------------- Treesitter Setup -------------------------------
     treesitter.setup({
@@ -119,7 +118,7 @@ return {
 
     ------------------------ Treesitter Key Binds ---------------------------------
     -- Treesj key bind
-    map("n", "<tab>", function() treesj.toggle() end, { desc = "Split/joining blocks of Code" })
+    vim.keymap.set("n", "<tab>", function() treesj.toggle() end, { desc = "Split/joining blocks of Code" })
 
   end
   --                            ┏━━━━━━━━━━━━━┓

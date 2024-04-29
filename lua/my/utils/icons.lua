@@ -6,7 +6,7 @@
 --╰──────────────────────────────────────────────────────────────────────────╯--
 local Icons = {}
 
-local data = {
+local icon_map = {
   kind = {
     Class = "󰠱",
     Color = "󰏘",
@@ -138,6 +138,8 @@ local data = {
     Sort = "",
     Spell = "󰓆",
     Square = "",
+    Star_empty = "",
+    Star_fill = "",
     Symlink = "",
     SymlinkFolder = "",
     Tab = "",
@@ -228,11 +230,11 @@ function Icons.get(category, add_space)
   if add_space then
     return setmetatable({}, {
       __index = function(_, key)
-        return data[category][key] .. " "
+        return icon_map[category][key] .. " "
       end,
     })
   else
-    return data[category]
+    return icon_map[category]
   end
 end
 

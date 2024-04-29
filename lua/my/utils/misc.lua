@@ -11,6 +11,12 @@ Misc.is_empty_line = function()
   return current_line:match('^%s*$') ~= nil
 end
 
+Misc.capitalize_string = function(str)
+  return (str:gsub("(%a)([%w_']*)", function(first, rest)
+    return first:upper()..rest
+  end, 1))
+end
+
 Misc.command_panel = function()
   require("telescope.builtin").keymaps({
     lhs_filter = function(lhs)
