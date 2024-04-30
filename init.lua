@@ -1,8 +1,7 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
 --│  FILE: init.lua                                                          │--
---│  DESC: Require my editor to load my config :)                            │--
+--│  DESC: Entry point of Neovim config                                      │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
 require("my.editor")
-require("my.plugins")
