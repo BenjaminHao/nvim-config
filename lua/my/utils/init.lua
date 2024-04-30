@@ -1,3 +1,4 @@
+-- TODO: migrate code into other modules
 local M = {}
 
 ---@class palette

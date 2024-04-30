@@ -71,4 +71,23 @@ Misc.buf_vtext = function()
   return text
 end
 
+---Get modules list under the path
+---@param path string Path string starting with "my/"
+---@return table Returns a table contains modules list in that path (in . form)
+---@usage get_modules_in_dir("my/plugins") will get a table contains lua modules in my/plugins dir.
+Misc.get_modules_in_dir = function(path)
+  local module_list = {}
+  local prefix = path:gsub("/", ".") .. "."
+  local file_list = vim.split(
+    vim.fn.fnamemodify(
+      vim.fn.glob(vim.fn.stdpath("config") .. "/lua/" .. path .. "/*.lua"), ":t"
+    ):sub(0, -5), "\n"
+  )
+  for _, file in ipairs(file_list) do
+    table.insert(module_list, prefix .. file)
+  end
+
+  return module_list
+end
+
 return Misc
