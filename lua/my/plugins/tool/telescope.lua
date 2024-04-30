@@ -4,32 +4,13 @@
 --│ DESC: Fuzzy finder plugin                                                │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
-local Plugin = {
-  "nvim-telescope/telescope.nvim",
-  branch = "0.1.x",
-  cmd = "Telescope",
-  keys = {
-    { "<leader>fb", "<cmd>Telescope buffers<cr>",  desc = "[b]uffers" },
-    { "<leader>fd", "<cmd>Telescope diagnostics<cr>",  desc = "[d]iagnostics" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>",  desc = "[f]iles" },
-    { "<leader>fg", "<cmd>Telescope live_grep<cr>",  desc = "[g]rep" },
-    { "<leader>fh", "<cmd>Telescope help_tags<cr>",  desc = "[h]elp" },
-    { "<leader>fk", "<cmd>Telescope keymaps<cr>",  desc = "[k]eymaps" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>",  desc = "[r]ecent files" },
-    { "<leader>fa", "<cmd>Telescope builtin<cr>",  desc = "[a]ll" },
-    { "<leader>fu", "<cmd>Telescope undo<cr>",  desc = "[u]ndo" },
-    { "<leader>fw", "<cmd>Telescope grep_string<cr>",  desc = "[w]ord" },
-    { "<leader>f<cr>", "<cmd>Telescope resume<cr>",  desc = "[RESUME]" },
-    -- Shortcut for searching your neovim configuration files
-    { "<leader>fn", function()
-      require("telescope.builtin").find_files {
-        cwd = vim.fn.stdpath "config",
-        prompt_title = "Find Neovim Config Files",
-      } end,
-      desc = "[n]eovim config"
-    },
-  },
-  dependencies = {
+local Plugin = { "nvim-telescope/telescope.nvim" }
+
+Plugin.branch = "0.1.x"
+
+Plugin.cmd = "Telescope"
+
+Plugin.dependencies = {
     { "nvim-lua/plenary.nvim" }, -- lua functions library
     { "ahmedkhalf/project.nvim" }, -- TODO: lazy loading
     { "nvim-tree/nvim-web-devicons" },  -- icons for ui
@@ -38,14 +19,13 @@ local Plugin = {
     { "nvim-telescope/telescope-live-grep-args.nvim" }, -- live grep args picker
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- a C port of fzf, Cmake required
     -- TODO: check { "jvgrootveld/telescope-zoxide" },
-  },
 }
 
 Plugin.config = function()
   local telescope = require("my.utils").load_plugin("telescope")
   local actions = require("my.utils").load_plugin("telescope.actions")
   local lga_actions = require("my.utils").load_plugin("telescope-live-grep-args.actions")
-  local undo = require("my.utils").load_plugin("telescope-undo.actions")
+  local undo_actions = require("my.utils").load_plugin("telescope-undo.actions")
   local project = require("my.utils").load_plugin("project_nvim")
   local icons = { ui = require("my.utils.icons").get("ui", true) }
   local file_filter = require("my.utils.filter").get("telescope_ignore_file")
@@ -124,14 +104,14 @@ Plugin.config = function()
         side_by_side = true,
         mappings = {
           i = {
-            ["<Cr>"] = undo.yank_additions,
-            ["<S-Cr>"] = undo.yank_deletions,
-            ["<C-Cr>"] = undo.restore,
+            ["<Cr>"] = undo_actions.yank_additions,
+            ["<S-Cr>"] = undo_actions.yank_deletions,
+            ["<C-Cr>"] = undo_actions.restore,
           },
           n = {
-            ["<Cr>"] = undo.yank_additions,
-            ["<S-Cr>"] = undo.yank_deletions,
-            ["<C-Cr>"] = undo.restore,
+            ["<Cr>"] = undo_actions.yank_additions,
+            ["<S-Cr>"] = undo_actions.yank_deletions,
+            ["<C-Cr>"] = undo_actions.restore,
           },
         },
       },
