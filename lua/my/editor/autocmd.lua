@@ -124,7 +124,7 @@ local function create_autocmd()
 
 end
 
-Autocmd.set_autocmd = function()
+Autocmd.setup = function()
   create_autocmd()
 end
 

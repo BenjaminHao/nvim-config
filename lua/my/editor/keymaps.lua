@@ -13,7 +13,7 @@ local map_cu = keybind.map_cu
 local map_cmd = keybind.map_cmd
 local map_fun = keybind.map_fun
 
-local editor_keymaps = {
+local data = {
   ----------------------------- Better Defaults --------------------------------
   -- Keep cursor centered
   ["n|J"] = map_cmd("mzJ`z"):desc("Edit: Join next line"),
@@ -73,12 +73,8 @@ local editor_keymaps = {
   ["t|<C-w>k"] = map_cmd("<Cmd>wincmd k<CR>"):desc("Windows: Focus up"),
 }
 
-Keymaps.set_leader_key = function()
-  vim.g.mapleader = " "
-end
-
-Keymaps.set_editor_keymaps = function()
-  keybind.set_nvim_keymap(editor_keymaps)
+Keymaps.setup = function()
+  keybind.set_nvim_keymap(data)
 end
 
 return Keymaps

@@ -9,13 +9,15 @@ local Plugin = {
   cmd = {
     "NvimTreeToggle",
     "NvimTreeOpen",
-    "NvimTreeFindFile",
-    "NvimTreeFindFileToggle"
   },
   dependencies = {
     { "nvim-tree/nvim-web-devicons" },
   }
 }
+
+Plugin.init = function()
+  require("my.plugins.keymaps").setup("nvim-tree")
+end
 
 Plugin.config = function()
   local nvimtree = require("nvim-tree")

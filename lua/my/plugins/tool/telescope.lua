@@ -19,6 +19,9 @@ local Plugin = {
     -- TODO: check { "jvgrootveld/telescope-zoxide" },
   }
 }
+Plugin.init = function()
+  require("my.plugins.keymaps").setup("telescope")
+end
 
 Plugin.config = function()
   local telescope = require("my.utils").load_plugin("telescope")

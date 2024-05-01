@@ -57,7 +57,7 @@ Please double check the word you selected:
 If nothing wrong, you may want to add the term into antonym table:
   Please modify data table in "my.utils.antonym"]],
         vim.log.levels.WARN,
-        { title = "[EDITOR] Runtime Warning" }
+        { title = "[my.utils.antonym] Runtime Warning" }
       )
     end)
 end

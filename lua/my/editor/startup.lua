@@ -78,10 +78,16 @@ You're recommended to install PowerShell for better experience.]],
   end
 end
 
-Startup.set_startup_config = function()
+
+local function set_leader_key()
+  vim.g.mapleader = " "
+end
+
+Startup.setup = function()
   create_cache_dir()
   set_clipboard_config()
   set_shell_config()
+  set_leader_key()
 end
 
 return Startup

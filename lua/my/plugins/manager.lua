@@ -1,10 +1,10 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ Module: my.editor.manager                                                │--
+--│ Module: my.plugins.manager                                               │--
 --│ Desc: Lazy.nvim as plugin manager                                        │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
-local Lazy = {}
+local Manager = {}
 
 local system = require("my.utils.system")
 local icons = {
@@ -120,11 +120,12 @@ local function setup_lazy()
     },
   }
   require("lazy").setup(lazy_config)
+  require("my.plugins.keymaps").setup("lazy")
 end
 
-Lazy.load_lazy = function()
+Manager.setup = function()
   bootstrap_lazy()
   setup_lazy()
 end
 
-return Lazy
+return Manager

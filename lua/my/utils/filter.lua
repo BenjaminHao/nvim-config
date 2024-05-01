@@ -46,7 +46,7 @@ local function get_variant_tbl(tbl)
   local variant_table = {}
   local capitalize = require("my.utils.misc").capitalize_string
   if not vim.tbl_islist(tbl) then
-    error("filter.get(): Variant only works on list like tables.")
+    error('[my.utils.filter]: Variant only works on list like tables.')
   end
   for i, str in ipairs(tbl) do
     table.insert(variant_table, str)
@@ -59,7 +59,7 @@ local function get_variant_tbl(tbl)
 end
 
 ---Get filter strings in a table.
----@param category "which_key_hidden"|"telescope_ignore_file"
+---@param category string
 ---@param variant? boolean Whether to make table include String & STRING.
 ---@return table The table that contains filter strings for specific category.
 Filter.get = function(category, variant)

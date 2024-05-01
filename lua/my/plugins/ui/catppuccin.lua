@@ -1,7 +1,7 @@
 --╭──────────────────────────────────────────────────────────────────────────╮--
 --│                                                                          │--
---│ FILE: my.plugins.ui.catppuccin                                           │--
---│ DESC: Colorscheme                                                        │--
+--│ MODULE: my.plugins.ui.catppuccin                                         │--
+--│ DESC: Beautiful colorscheme                                              │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
 local Plugin = {

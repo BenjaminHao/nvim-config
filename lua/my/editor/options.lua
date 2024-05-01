@@ -7,7 +7,7 @@
 local Options = {}
 local system = require("my.utils.system")
 
-local global_options = {
+local global = {
 
   -- GENERAL
   timeoutlen = 500,                      -- Time to wait for a mapped sequence to complete (in milliseconds)
@@ -72,7 +72,7 @@ local global_options = {
   inccommand = "split",                  -- Shows all inline replacements in split
 }
 
-local neovide_options = {
+local neovide = {
   no_idle = true,                        -- Force neovide to redraw all the time
   refresh_rate = 60,                     -- Set neovide fps, only effective when not using vsync
   cursor_vfx_mode = "railgun",           -- Cursor particles: "railgun"|"torpedo"|"pixiedust"|"sonicboom"|"ripple"|"wireframe"
@@ -85,14 +85,14 @@ local neovide_options = {
   cursor_vfx_particle_lifetime = 1.2,    -- Sets the amount of time the generated particles should survive
 }
 
-Options.set_editor_options = function()
-  for option, value in pairs(global_options) do
-    vim.opt[option] = value
+Options.setup = function()
+  for key, value in pairs(global) do
+    vim.opt[key] = value
   end
 
   if vim.g.neovide then
-    for name, config in pairs(neovide_options) do
-      vim.g["neovide_" .. name] = config
+    for key, value in pairs(neovide) do
+      vim.g["neovide_" .. key] = value
     end
   end
 end
