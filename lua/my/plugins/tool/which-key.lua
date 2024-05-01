@@ -4,9 +4,10 @@
 --│ DESC: showing pending key binds                                          │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
-local Plugin = { "folke/which-key.nvim" }
-
-Plugin.event = "VeryLazy"
+local Plugin = {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+}
 
 Plugin.init = function()
   vim.o.timeout = true

@@ -4,17 +4,17 @@
 --│ DESC: file explorer plugin                                               │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
-local Plugin = { "nvim-tree/nvim-tree.lua" }
-
-Plugin.cmd = {
-  "NvimTreeToggle",
-  "NvimTreeOpen",
-  "NvimTreeFindFile",
-  "NvimTreeFindFileToggle"
-}
-
-Plugin.dependencies = {
-  { "nvim-tree/nvim-web-devicons" },
+local Plugin = {
+  "nvim-tree/nvim-tree.lua",
+  cmd = {
+    "NvimTreeToggle",
+    "NvimTreeOpen",
+    "NvimTreeFindFile",
+    "NvimTreeFindFileToggle"
+  },
+  dependencies = {
+    { "nvim-tree/nvim-web-devicons" },
+  }
 }
 
 Plugin.config = function()

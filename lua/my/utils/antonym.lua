@@ -5,7 +5,6 @@
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
 local Antonym = {}
-local capitalize = require("my.utils.misc").capitalize_string
 
 ---@usage Put lower case antonyms here. Final table will include capitalized & upper case strings.
 local data = {
@@ -24,6 +23,7 @@ local data = {
 
 local get_antonym_tbl = function()
   local antonym_table = {}
+  local capitalize = require("my.utils.misc").capitalize_string
   for key, value in pairs(data) do
     antonym_table[key] = value
     if string.find(key, "%a") and string.find(value, "%a") then

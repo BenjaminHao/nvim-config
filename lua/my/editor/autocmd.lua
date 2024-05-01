@@ -9,6 +9,7 @@ local Autocmd = {}
 local function create_autocmd()
   local autocmd = vim.api.nvim_create_autocmd
   local general = vim.api.nvim_create_augroup("General Settings", { clear = true })
+  local ft_filter = require("my.utils.filter").get("quit_with_q")
 
   autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     desc = "Reload file when it changed",
@@ -42,10 +43,14 @@ local function create_autocmd()
   autocmd("FileType", {
     desc = "Close specific buffers with <q>",
     group = general,
-    pattern = { "lspinfo", "man", "help", "qf", "vim", "checkhealth", "spectre_panel" },
+    pattern = ft_filter,
     callback = function(event)
       vim.bo[event.buf].buflisted = false
-      vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+      vim.keymap.set("n", "q", "<cmd>close<cr>", {
+        buffer = event.buf,
+        noremap = true,
+        silent = true,
+      })
     end,
   })
 

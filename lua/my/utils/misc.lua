@@ -30,7 +30,7 @@ Misc.command_panel = function()
   })
 end
 
-Misc.flash_esc_or_noh = function()
+Misc.esc_flash_or_noh = function()
   local flash_active, state = pcall(function()
     return require("flash.plugins.char").state
   end)
@@ -79,12 +79,11 @@ Misc.get_modules_in_dir = function(path)
   local module_list = {}
   local prefix = path:gsub("/", ".") .. "."
   local file_list = vim.split(
-    vim.fn.fnamemodify(
-      vim.fn.glob(vim.fn.stdpath("config") .. "/lua/" .. path .. "/*.lua"), ":t"
-    ):sub(0, -5), "\n"
+    vim.fn.glob(vim.fn.stdpath("config") .. "/lua/" .. path .. "/*.lua"),
+    "\n"
   )
   for _, file in ipairs(file_list) do
-    table.insert(module_list, prefix .. file)
+    table.insert(module_list, prefix .. vim.fn.fnamemodify(file, ":t"):sub(0, -5))
   end
 
   return module_list

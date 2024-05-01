@@ -5,9 +5,17 @@
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
 local Filter = {}
-local capitalize = require("my.utils.misc").capitalize_string
 
 local data = {
+  quit_with_q = {
+    "lspinfo",
+    "man",
+    "help",
+    "qf",
+    "vim",
+    "checkhealth",
+    "spectre_panel",
+  },
   which_key_hidden = {
     "<silent>",
     "<cmd>",
@@ -36,6 +44,7 @@ local data = {
 
 local function get_variant_tbl(tbl)
   local variant_table = {}
+  local capitalize = require("my.utils.misc").capitalize_string
   if not vim.tbl_islist(tbl) then
     error("filter.get(): Variant only works on list like tables.")
   end

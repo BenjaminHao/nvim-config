@@ -4,13 +4,11 @@
 --│ DESC: Fuzzy finder plugin                                                │--
 --│                                                                          │--
 --╰──────────────────────────────────────────────────────────────────────────╯--
-local Plugin = { "nvim-telescope/telescope.nvim" }
-
-Plugin.branch = "0.1.x"
-
-Plugin.cmd = "Telescope"
-
-Plugin.dependencies = {
+local Plugin = {
+  "nvim-telescope/telescope.nvim",
+  branch = "0.1.x",
+  cmd = "Telescope",
+  dependencies = {
     { "nvim-lua/plenary.nvim" }, -- lua functions library
     { "ahmedkhalf/project.nvim" }, -- TODO: lazy loading
     { "nvim-tree/nvim-web-devicons" },  -- icons for ui
@@ -19,6 +17,7 @@ Plugin.dependencies = {
     { "nvim-telescope/telescope-live-grep-args.nvim" }, -- live grep args picker
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }, -- a C port of fzf, Cmake required
     -- TODO: check { "jvgrootveld/telescope-zoxide" },
+  }
 }
 
 Plugin.config = function()

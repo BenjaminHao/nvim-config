@@ -7,18 +7,17 @@
 local Keymaps = {}
 
 local misc = require("my.utils.misc")
-local keybind = require("my.utils.keybind")
-local map_cr = keybind.map_cr
-local map_cu = keybind.map_cu
-local map_cmd = keybind.map_cmd
-local map_fun = keybind.map_fun
+local map_cr = require("my.utils.keybind").map_cr
+local map_cu = require("my.utils.keybind").map_cu
+local map_cmd = require("my.utils.keybind").map_cmd
+local map_fun = require("my.utils.keybind").map_fun
 
 Keymaps["nvim-tree"] = {
-  ["n|<Leader>e"] = map_cr("NvimTreeToggle"):desc("NvimTree: Toggle"),
+  ["n|<Leader>e"] = map_cr("NvimTreeToggle"):desc("Tool: Nvim-Tree"),
 }
 
 Keymaps["telescope"] = {
-  ["n|<C-p>"] = map_fun(function() misc.command_panel() end):desc("tool: Toggle command panel"),
+  ["n|<C-p>"] = map_fun(function() misc.command_panel() end):desc("Tool: Toggle command panel"),
   ["n|<Leader>ff"] = map_cr("Telescope find_files"):desc("Find: Files"),
   ["n|<Leader>fh"] = map_cr("Telescope help_tags"):desc("Find: Help"),
   ["n|<Leader>fp"] = map_cr("Telescope projects"):desc("Find: Projects"),

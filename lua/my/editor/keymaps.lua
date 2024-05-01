@@ -50,7 +50,7 @@ local editor_keymaps = {
   ["v|J"] = map_cmd(":m '>+1<CR>gv=gv"):desc("Edit: Move this line down"),
   ["v|K"] = map_cmd(":m '<-2<CR>gv=gv"):desc("Edit: Move this line up"),
   -- Others
-  ["n|<Esc>"] = map_fun(function() misc.flash_esc_or_noh() end):desc("Edit: Clear search highlight"),
+  ["n|<Esc>"] = map_fun(function() misc.esc_flash_or_noh() end):desc("Edit: Clear search highlight"),
   ["n|<S-Tab"] = map_cr("normal za"):desc("Edit: Toggle code fold"),
   ["n|<Leader>w"] = map_cu("write"):desc("Edit: Write file"),
   ["n|<Leader>q"] = map_cr("wq"):desc("Edit: Save file and quit"),
@@ -74,7 +74,6 @@ local editor_keymaps = {
 }
 
 Keymaps.set_leader_key = function()
-  -- <Space> is <Leader>
   vim.g.mapleader = " "
 end
 
